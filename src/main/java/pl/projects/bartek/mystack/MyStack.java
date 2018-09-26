@@ -55,4 +55,22 @@ public class MyStack<Type> implements Stack<Type> {
     }
 
 
+    @Override
+    public String toString() {
+        if(length == 0) {
+            return "[]";
+        }
+
+        StringBuilder textBuilder = new StringBuilder("[");
+        for(int i = 0; i < length - 1; ++i) {
+            textBuilder.append(array[i]).append(", ");
+        }
+
+        textBuilder.append(array[length - 1]).append("]");
+
+        return textBuilder.toString();
+    }
+
+
+
 }
