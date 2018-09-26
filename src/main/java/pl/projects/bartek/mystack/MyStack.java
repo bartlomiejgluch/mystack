@@ -6,22 +6,34 @@ public class MyStack<Type> implements Stack<Type> {
 
     private Function<Integer, Type[]> provider;
     private Type[] array;
-    private int lenght;
-    private int sizeIncrase;
+    private int length;
+    private int sizeIncrease;
 
-    public MyStack(int size, int sizeIncrase, Function<Integer, Type[]> provider) {
+    public MyStack(int size, int sizeIncrease, Function<Integer, Type[]> provider) {
 
         this.provider = provider;
         array = provider.apply(size);
-        this.sizeIncrase = sizeIncrase;
-        lenght = 0;
+        length = 0;
+        this.sizeIncrease = sizeIncrease;
 
     }
 
 
     @Override
     public void push(Type a) {
+        if (length == array.length) {
 
+            increase(sizeIncrease);
+        }
+        array[length] = a;
+        ++length;
+    }
+
+    private void increase(int sizeIncrease) {
+        Type[] temp = provider.apply(length + sizeIncrease);
+        System.arraycopy(array, 0, temp, 0, array.length);
+
+        array = temp;
     }
 
     @Override
