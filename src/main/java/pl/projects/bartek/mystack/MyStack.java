@@ -39,22 +39,20 @@ public class MyStack<Type> implements Stack<Type> {
 
     @Override
     public Type pop() {
-        if(length <=0){
+        if (length <= 0) {
             throw new EmptyStackException();
         }
-        Type temp = array[length-1];
+        Type temp = array[length - 1];
         --length;
         return temp;
     }
 
 
-
-
     @Override
     public boolean isEmpty() {
-        return false;
+
+        return length <= 0;
     }
 
 
-    
 }
