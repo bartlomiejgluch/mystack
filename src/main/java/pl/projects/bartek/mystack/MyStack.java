@@ -1,5 +1,6 @@
 package pl.projects.bartek.mystack;
 
+import java.util.EmptyStackException;
 import java.util.function.Function;
 
 public class MyStack<Type> implements Stack<Type> {
@@ -38,11 +39,22 @@ public class MyStack<Type> implements Stack<Type> {
 
     @Override
     public Type pop() {
-        return null;
+        if(length <=0){
+            throw new EmptyStackException();
+        }
+        Type temp = array[length-1];
+        --length;
+        return temp;
     }
+
+
+
 
     @Override
     public boolean isEmpty() {
         return false;
     }
+
+
+    
 }
